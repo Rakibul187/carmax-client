@@ -2,6 +2,7 @@ import Dashboard from "../../Dashboard/Dashboard";
 import Home from "../../Home/Home/Home";
 import Login from "../../Login/Login/Login";
 import Signup from "../../Login/Signup/Signup";
+import ErrorPage from "../../shared/ErrorPage/ErrorPage";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -11,6 +12,7 @@ const routes = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/', element: <Home></Home>
