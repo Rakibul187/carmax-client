@@ -1,3 +1,4 @@
+import DashboardLayout from "../../../Layout/DashBoardLayout/DashBoardLayout";
 import Dashboard from "../../Dashboard/Dashboard";
 import Home from "../../Home/Home/Home";
 import Login from "../../Login/Login/Login";
@@ -26,6 +27,15 @@ const routes = createBrowserRouter([
             {
                 path: '/dashboard', element: <PrivateRoute> <Dashboard></Dashboard></PrivateRoute>
             },
+        ]
+    },
+    {
+        path: '/dashboard',
+        element: <DashboardLayout></DashboardLayout>,
+        children: [
+            {
+                path: '/dashboard', element: <Dashboard></Dashboard>
+            }
         ]
     }
 ])
