@@ -1,0 +1,14 @@
+[
+    {
+        "Category": "Sports Car",
+        "categoryId": "1"
+    },
+    {
+        "Category": "Crossover",
+        "categoryId": "2"
+    },
+    {
+        "Category": "Convertible",
+        "categoryId": "3"
+    }
+]

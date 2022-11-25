@@ -3,6 +3,7 @@ import Dashboard from "../../Dashboard/Dashboard";
 import Home from "../../Home/Home/Home";
 import Login from "../../Login/Login/Login";
 import Signup from "../../Login/Signup/Signup";
+import CategoriesProducts from "../../Products/CategoriesProducts/CategoriesProducts";
 import ErrorPage from "../../shared/ErrorPage/ErrorPage";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
@@ -26,6 +27,11 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/dashboard', element: <PrivateRoute> <Dashboard></Dashboard></PrivateRoute>
+            },
+            {
+                path: '/category/:Category',
+                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.Category}`),
+                element: <CategoriesProducts></CategoriesProducts>
             },
         ]
     },

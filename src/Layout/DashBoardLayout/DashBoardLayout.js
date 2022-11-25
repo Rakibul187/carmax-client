@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../pages/Contexts/AuthProvider/AuthProvider';
 // import useAdmin from '../../../hooks/useAdmin';
-// import { AuthContext } from '../../../pages/Contexts/AuthProvider/AuthProvider';
 import Navbar from '../../pages/shared/Navbar/Navbar';
 // import Navbar from '../../../pages/shared/Navbar/Navbar';
 
