@@ -1,14 +1,17 @@
 [
     {
         "Category": "Sports Car",
-        "categoryId": "1"
+        "categoryId": "1",
+        "img": "https://i.ibb.co/p1zRYHW/sports.png"
     },
     {
         "Category": "Crossover",
-        "categoryId": "2"
+        "categoryId": "2",
+        "img": "https://i.ibb.co/17vmbn1/crossover.png"
     },
     {
         "Category": "Convertible",
-        "categoryId": "3"
+        "categoryId": "3",
+        "img": "https://i.ibb.co/QvsSbtx/convertible.png"
     }
 ]
