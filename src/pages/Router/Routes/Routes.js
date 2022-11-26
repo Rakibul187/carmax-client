@@ -1,5 +1,6 @@
 import DashboardLayout from "../../../Layout/DashBoardLayout/DashBoardLayout";
 import Dashboard from "../../Dashboard/Dashboard";
+import MyBooking from "../../Dashboard/MyBooking";
 import Home from "../../Home/Home/Home";
 import Login from "../../Login/Login/Login";
 import Signup from "../../Login/Signup/Signup";
@@ -40,7 +41,10 @@ const routes = createBrowserRouter([
         element: <DashboardLayout></DashboardLayout>,
         children: [
             {
-                path: '/dashboard', element: <Dashboard></Dashboard>
+                path: '/dashboard', element: <MyBooking></MyBooking>
+            },
+            {
+                path: '/dashboard/bookings', element: <MyBooking></MyBooking>
             }
         ]
     }
