@@ -1,14 +1,14 @@
 import React from 'react';
 
-const Products = ({ product }) => {
+const Products = ({ product, setBooking }) => {
     console.log(product)
-    const { img, description, mobile, postTime, productCondition, purchasePrice, resellPrice, sellerNmae, yearOfPurchase, yearOfUse } = product
+    const { img, description, mobile, postTime, productName, productCondition, purchasePrice, resellPrice, sellerNmae, yearOfPurchase, yearOfUse } = product
     return (
         <div>
             <div className="card lg:card-side bg-base-100 shadow-xl mb-10">
                 <figure className='w-[40vw] p-8 sm:mx-auto'><img src={img} alt="Album" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title">  {product.productName}</h2>
+                    <h2 className="card-title">  {productName}</h2>
                     <p className='text-slate-500'>{description}</p>
                     <div className='grid lg:grid-cols-3 md:grid-cols-2'>
                         <p className='text-secondary'><span >Purchase Year: </span> {yearOfPurchase}</p>
@@ -23,7 +23,8 @@ const Products = ({ product }) => {
                         </div>
                     </div>
                     <div className='flex justify-end'>
-                        <button className="btn btn-primary">Booking Now</button>
+
+                        <label onClick={() => setBooking(product)} htmlFor="booking-modal" className="btn btn-primary">Booking Now</label>
                     </div>
                 </div>
 
