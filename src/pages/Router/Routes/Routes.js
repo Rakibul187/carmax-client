@@ -1,4 +1,5 @@
 import DashboardLayout from "../../../Layout/DashBoardLayout/DashBoardLayout";
+import AddProduct from "../../Dashboard/AddProduct";
 import Dashboard from "../../Dashboard/Dashboard";
 import MyBooking from "../../Dashboard/MyBooking";
 import Home from "../../Home/Home/Home";
@@ -45,6 +46,9 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/dashboard/bookings', element: <MyBooking></MyBooking>
+            },
+            {
+                path: '/dashboard/addproduct', element: <AddProduct></AddProduct>
             }
         ]
     }

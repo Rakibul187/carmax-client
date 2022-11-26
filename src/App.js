@@ -11,8 +11,8 @@ function App() {
 
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={routes}>
-          <Toaster />
         </RouterProvider>    </QueryClientProvider>
+      <Toaster />
     </div>
   );
 }

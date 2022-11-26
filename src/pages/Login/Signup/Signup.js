@@ -20,6 +20,9 @@ const Signup = () => {
     //     navigate(from, { replace: true })
     // }
 
+
+
+
     const handleSignup = data => {
         console.log(data)
         creatUser(data.email, data.password)
@@ -33,7 +36,7 @@ const Signup = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        // saveUser(data?.name, data?.email)
+                        saveUser(data?.name, data?.email, data?.role)
                     })
                     .catch(e => console.error(e))
             })
@@ -43,22 +46,23 @@ const Signup = () => {
             })
     }
 
-    // const saveUser = (name, email) => {
-    //     const user = { name, email }
+    const saveUser = (name, email, role) => {
+        const user = { name, email, role }
 
-    //     fetch('http://localhost:5000/users', {
-    //         method: "POST",
-    //         headers: {
-    //             "content-type": "application/json"
-    //         },
-    //         body: JSON.stringify(user)
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setCreatedUserEmail(email)
-    //             // getUserToken(email)
-    //         })
-    // }
+        fetch('http://localhost:5000/users', {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                // setCreatedUserEmail(email)
+                // getUserToken(email)
+            })
+    }
 
 
 
@@ -88,8 +92,8 @@ const Signup = () => {
                         <select type="role" className="select select-bordered w-full max-w-xs"
                             {...register("role", { required: "Role is required" })}
                             aria-invalid={errors.role ? "true" : "false"} >
+                            <option>Buyer</option>
                             <option>Seller</option>
-                            <option>User</option>
                         </select>
                         {errors.role && <p className='text-red-600' >{errors.role?.message}</p>}
                     </div>
