@@ -1,7 +1,10 @@
 import DashboardLayout from "../../../Layout/DashBoardLayout/DashBoardLayout";
+import Blogs from "../../Blogs/Blogs";
 import AddProduct from "../../Dashboard/AddProduct";
+import AllUsers from "../../Dashboard/AllUsers";
 import Dashboard from "../../Dashboard/Dashboard";
 import MyBooking from "../../Dashboard/MyBooking";
+import MyProducts from "../../Dashboard/MyProducts";
 import Home from "../../Home/Home/Home";
 import Login from "../../Login/Login/Login";
 import Signup from "../../Login/Signup/Signup";
@@ -31,6 +34,9 @@ const routes = createBrowserRouter([
                 path: '/dashboard', element: <PrivateRoute> <Dashboard></Dashboard></PrivateRoute>
             },
             {
+                path: '/blogs', element: <Blogs></Blogs>
+            },
+            {
                 path: '/category/:Category',
                 loader: ({ params }) => fetch(`http://localhost:5000/category/${params.Category}`),
                 element: <CategoriesProducts></CategoriesProducts>
@@ -49,7 +55,15 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/dashboard/addproduct', element: <AddProduct></AddProduct>
-            }
+            },
+            {
+                path: '/dashboard/myproducts', element: <MyProducts></MyProducts>
+            },
+            {
+                path: '/dashboard/allusers',
+                loader: () => fetch("http://localhost:5000/users"),
+                element: <AllUsers></AllUsers>
+            },
         ]
     }
 ])

@@ -62,8 +62,27 @@ const AddProduct = () => {
                     <label className="label"> <span className="label-text">Product Name</span></label>
                     <input type="text" {...register("productName", {
                         required: "Title is Required"
-                    })} className="input input-bordered w-full max-w-xs" />
+                    })} className="input input-bordered w-full" />
                     {errors.title && <p className='text-red-500'>{errors.title.message}</p>}
+                </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"> <span className="label-text ">Product Category</span></label>
+                    <select
+                        {...register('category')}
+                        className="select input-bordered w-full max-w-xs">
+                        <option value='Sports Car'>Sports Car</option>
+                        <option value='Crossover'>Crossover</option>
+                        <option value='Convertible'>Convertible</option>
+                    </select>
+                </div>
+                <div className='form-control w-full max-w-xs'>
+                    <label className="label"> <span className="label-text">Product Condition </span></label>
+                    <select className='w-full border py-2 max-w-xs mt-3 rounded-xl' {...register("conditionType", { required: true })}>
+                        <option value="Good">Good</option>
+                        <option value="Fair">Fair</option>
+                        <option value="excellent">excellent</option>
+                        {errors.conditionType && <p className='text-red-500'>{errors.conditionType.message}</p>}
+                    </select>
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Original Price</span></label>
@@ -108,40 +127,20 @@ const AddProduct = () => {
                     {errors.YearOfPurchase && <p className='text-red-500'>{errors.YearOfPurchase.message}</p>}
                 </div>
                 <div className="form-control w-full max-w-xs">
-                    <label className="label"> <span className="label-text">Description</span></label>
-                    <textarea className="textarea w-full max-w-xs textarea-bordered" {...register("description", {
-                        required: true
-                    })} placeholder="Description"></textarea>
-                    {errors.description && <p className='text-red-500'>{errors.description.message}</p>}
-                </div>
-
-                <div className='form-control w-full max-w-xs'>
-                    <label className="label"> <span className="label-text">Condition Type</span></label>
-                    <select className='w-full border py-2 max-w-xs mt-3 rounded-xl' {...register("conditionType", { required: true })}>
-                        <option value="Good">Good</option>
-                        <option value="Fair">Fair</option>
-                        <option value="excellent">excellent</option>
-                        {errors.conditionType && <p className='text-red-500'>{errors.conditionType.message}</p>}
-                    </select>
-                </div>
-                <div className="form-control w-full max-w-xs">
-                    <label className="label"> <span className="label-text">Category</span></label>
-                    <select
-                        {...register('category')}
-                        className="select input-bordered w-full max-w-xs">
-                        <option value='Sports Car'>Sports Car</option>
-                        <option value='Crossover'>Crossover</option>
-                        <option value='Convertible'>Convertible</option>
-                    </select>
-                </div>
-                <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Photo</span></label>
                     <input type="file" {...register("image", {
                         required: "Photo is Required"
                     })} className="input input-bordered w-full max-w-xs" />
                     {errors.img && <p className='text-red-500'>{errors.img.message}</p>}
                 </div>
-                <button className='btn bg text-white w-full mt-4' type="submit">add Products</button>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"> <span className="label-text">Description</span></label>
+                    <textarea className="textarea w-full max-w-xs textarea-bordered" {...register("description", {
+                        required: true
+                    })} placeholder="Description"></textarea>
+                    {errors.description && <p className='text-red-500'>{errors.description.message}</p>}
+                </div>
+                <button className='btn bg-primary text-white w-full mt-4' type="submit">add Products</button>
             </form>
         </div>
     );
