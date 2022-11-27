@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -7,8 +8,10 @@ import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Signup = () => {
     const { handleSubmit, register, formState: { errors } } = useForm()
-    const { creatUser, updateUser } = useContext(AuthContext)
+    const { creatUser, updateUser, googleSignIn } = useContext(AuthContext)
     const [signUpError, setSignUpError] = useState('')
+    const provider = new GoogleAuthProvider()
+
     // const [createdUserEmail, setCreatedUserEmail] = useState('')
     // const [token] = useToken(createdUserEmail)
 
@@ -46,6 +49,18 @@ const Signup = () => {
             })
     }
 
+    const handlerGoogleSignIn = () => {
+        googleSignIn(provider)
+            .then((result) => {
+                const user = result.user
+                console.log(user)
+                toast.success('User Created Successfully')
+                navigate(from, { replace: true })
+            })
+            .catch((e) => console.error(e))
+    }
+
+
     const saveUser = (name, email, role) => {
         const user = { name, email, role }
 
@@ -63,8 +78,6 @@ const Signup = () => {
                 // getUserToken(email)
             })
     }
-
-
 
     return (
         <div className='h-[500px] flex justify-center mt-1 mb-24'>
@@ -113,7 +126,7 @@ const Signup = () => {
                 {signUpError && <p className='text-red-600'>{signUpError}</p>}
                 <small>Already have an account? <Link className='text-secondary' to='/login'>please login</Link></small>
                 <div className="divider">or</div>
-                <button className='btn btn-outline w-full mb-48'>CONTINUE WITH GOOGLE</button>
+                <button onClick={handlerGoogleSignIn} className='btn btn-outline w-full mb-48'>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );

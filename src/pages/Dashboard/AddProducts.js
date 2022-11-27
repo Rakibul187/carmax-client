@@ -1,13 +1,23 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
-import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
+import { ProductAdd } from '../../../Hooks/ProductAdd';
+import './AddProducts.css';
 
-const AddProduct = () => {
-    const { handleSubmit, register, formState: { errors } } = useForm()
-    const { user } = useContext(AuthContext)
 
-    const handleAddProduct = data => {
+const AddProducts = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const date = new Date();
+
+    const { data: categories = [] } = useQuery({
+        queryKey: ['categories'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/category');
+            const data = await res.json();
+            return data;
+        }
+    })
+    const addProduct = data => {
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image);
@@ -19,51 +29,42 @@ const AddProduct = () => {
             .then(res => res.json())
             .then(imageData => {
                 const product = {
-                    productName: data.productName,
-                    Category: data.category,
-                    categoryId: "1",
-                    sellerNmae: user.displayName,
-                    purchasePrice: data.originalPrice,
-                    resellPrice: data.resalePrice,
-                    mobile: data.phoneNumber,
-                    // postTime: data.publishTime,
-                    postTime: new Date(),
+                    title: data.title,
+                    sellerName: data.sellerName,
+                    originalPrice: data.originalPrice,
+                    resalePrice: data.resalePrice,
+                    phoneNumber: data.phoneNumber,
                     location: data.location,
-                    yearOfUse: data.yearOfUse + "years",
-                    yearOfPurchase: data.YearOfPurchase,
+                    publishTime: data.publishTime,
+                    yearOfUse: data.yearOfUse,
+                    YearOfPurchase: data.YearOfPurchase,
                     description: data.description,
-                    productCondition: data.conditionType,
+                    conditionType: data.conditionType,
+                    categoryId: data.categoryId,
                     image: imageData.data.url,
                 };
-                console.log(product)
-
-                fetch('http://localhost:5000/addproduct', {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(product)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.acknowledged) {
-                            console.log(data)
-                            toast.success("Product Upload Successfully.")
-                        }
-                    })
+                console.log(product.categoryId)
+                ProductAdd(product)
             })
     }
 
     return (
         <div className='w-96 p-7'>
             <h2 className="text-4xl">Add Product</h2>
-            <form onSubmit={handleSubmit(handleAddProduct)}>
+            <form onSubmit={handleSubmit(addProduct)}>
                 <div className="form-control w-full max-w-xs">
-                    <label className="label"> <span className="label-text">Product Name</span></label>
-                    <input type="text" {...register("productName", {
+                    <label className="label"> <span className="label-text">Title</span></label>
+                    <input type="text" {...register("title", {
                         required: "Title is Required"
                     })} className="input input-bordered w-full max-w-xs" />
                     {errors.title && <p className='text-red-500'>{errors.title.message}</p>}
+                </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"> <span className="label-text">Seller Name</span></label>
+                    <input type="text" {...register("sellerName", {
+                        required: "sellerName is Required"
+                    })} className="input input-bordered w-full max-w-xs" />
+                    {errors.sellerName && <p className='text-red-500'>{errors.sellerName.message}</p>}
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Original Price</span></label>
@@ -92,6 +93,13 @@ const AddProduct = () => {
                         required: true
                     })} className="input input-bordered w-full max-w-xs" />
                     {errors.location && <p className='text-red-500'>{errors.location.message}</p>}
+                </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"> <span className="label-text">Publish Time</span></label>
+                    <input type="time" {...register("publishTime", {
+                        required: true
+                    })} className="input input-bordered w-full max-w-xs" />
+                    {errors.publishTime && <p className='text-red-500'>{errors.publishTime.message}</p>}
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Year of use</span></label>
@@ -127,11 +135,16 @@ const AddProduct = () => {
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text">Category</span></label>
                     <select
-                        {...register('category')}
+                        {...register('categoryId')}
                         className="select input-bordered w-full max-w-xs">
-                        <option value='Sports Car'>Sports Car</option>
-                        <option value='Crossover'>Crossover</option>
-                        <option value='Convertible'>Convertible</option>
+                        {
+                            categories.map(category => <option
+                                key={category._id}
+                                value={category._id}
+                            >{category.brand}</option>)
+                        }
+
+
                     </select>
                 </div>
                 <div className="form-control w-full max-w-xs">
@@ -147,4 +160,5 @@ const AddProduct = () => {
     );
 };
 
-export default AddProduct;
+
+export default AddProducts;
