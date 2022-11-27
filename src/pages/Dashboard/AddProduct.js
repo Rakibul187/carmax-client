@@ -6,12 +6,13 @@ import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
 const AddProduct = () => {
     const { handleSubmit, register, formState: { errors } } = useForm()
     const { user } = useContext(AuthContext)
+    const imgHostKey = process.env.REACT_APP_imgbb_key;
 
     const handleAddProduct = data => {
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image);
-        const url = 'https://api.imgbb.com/1/upload?key=c7dc20a1cddfbaca42a43629f694835d'
+        const url = `https://api.imgbb.com/1/upload?key=${imgHostKey}`
         fetch(url, {
             method: 'POST',
             body: formData

@@ -19,42 +19,40 @@ const MyBooking = () => {
     return (
         <div>
             {
-                bookings?.length ?
-                    <div>
-                        <h3 className="text-3xl mb-5">My Bookings</h3>
-                        <div className="overflow-x-auto">
-                            <table className="table w-full">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>Image</th>
-                                        <th>Name</th>
-                                        <th>Product</th>
-                                        <th>Price</th>
-                                        <th>Meeting Location</th>
-                                        <th>Payment</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {
-                                        bookings?.map((booking, i) => <tr key={booking._id}>
-                                            <th>{i + 1}</th>
-                                            <td> <div className="w-24 mask mask-squircle">
-                                                <img src={booking.img} alt='' />
-                                            </div></td>
-                                            <td>{booking.buyerName}</td>
-                                            <td>{booking.productName}</td>
-                                            <td>${booking.resellPrice}</td>
-                                            <td>{booking.meetingLocation}</td>
-                                            <td><button className='btn btn-xs btn-primary'>Pay</button></td>
-                                        </tr>)
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
+                bookings?.length &&
+                <div>
+                    <h3 className="text-2xl mt-8 font-bold mb-5">Your Ordered Products</h3>
+                    <div className="overflow-x-auto">
+                        <table className="table w-full">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Meeting Location</th>
+                                    <th>Payment</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    bookings?.map((booking, i) => <tr key={booking._id}>
+                                        <th>{i + 1}</th>
+                                        <td> <div className="w-24 mask mask-squircle">
+                                            <img src={booking.img} alt='' />
+                                        </div></td>
+                                        <td>{booking.buyerName}</td>
+                                        <td>{booking.productName}</td>
+                                        <td>${booking.resellPrice}</td>
+                                        <td>{booking.meetingLocation}</td>
+                                        <td><button className='btn btn-xs btn-primary'>Pay</button></td>
+                                    </tr>)
+                                }
+                            </tbody>
+                        </table>
                     </div>
-                    :
-                    <p className='text-3xl font-semibold'>You dont have any bookings yet!</p>
+                </div>
             }
         </div>
     );

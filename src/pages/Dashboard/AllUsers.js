@@ -3,7 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 
 const AllUsers = () => {
     const users = useLoaderData()
-    console.log(users)
+    // console.log(users)
     return (
         <div className='p-10'>
             {

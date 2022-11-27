@@ -1,6 +1,7 @@
 import DashboardLayout from "../../../Layout/DashBoardLayout/DashBoardLayout";
 import Blogs from "../../Blogs/Blogs";
 import AddProduct from "../../Dashboard/AddProduct";
+import AllSellers from "../../Dashboard/AllSellers";
 import AllUsers from "../../Dashboard/AllUsers";
 import Dashboard from "../../Dashboard/Dashboard";
 import MyBooking from "../../Dashboard/MyBooking";
@@ -63,6 +64,9 @@ const routes = createBrowserRouter([
                 path: '/dashboard/allusers',
                 loader: () => fetch("http://localhost:5000/users"),
                 element: <AllUsers></AllUsers>
+            },
+            {
+                path: '/dashboard/allsellers', element: <AllSellers></AllSellers>
             },
         ]
     }

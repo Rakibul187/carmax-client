@@ -11,23 +11,33 @@ const Categories = () => {
     }, [])
     // console.log(categories)
     return (
-        <div className='mt-20'>
-            <p className='text-3xl text-center'>We Sell </p>
-            <p><span className='border border-t-2'></span></p>
-            <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 sm:mx-auto'>
-                {
-                    categories?.map(category =>
-                        <div key={category._id} className="card w-96 bg-base-100 shadow-xl">
-                            <div className="card-body">
-                                <div className="card-actions">
-                                    <Link to={`/category/${category?.Category}`}><button className="btn btn-primary">{category.Category}</button></Link>
+        <div>
+            {
+                categories &&
+
+                <div className=' my-32'>
+                    <p className='text-3xl font-bold text-center'>We Sell </p>
+                    <p><span className='border border-t-2'></span></p>
+                    <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 sm:mx-auto'>
+                        {
+                            categories?.map(category =>
+                                <div className="card w-96 bg-base-100 shadow-xl">
+                                    <figure className="px-2 pt-2">
+                                        <img src={category.img} alt="Shoes" className="rounded-xl h-[120px]" />
+                                    </figure>
+                                    <div className="card-body items-center text-center">
+                                        <h2 className="card-title text-2xl mt-0 font-bold">{category.Category}</h2>
+                                        <div className="card-actions">
+                                            <Link to={`/category/${category?.Category}`}><button className="btn btn-primary w-32">See All</button></Link>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    )
-                }
-            </div >
-        </div >
+                            )
+                        }
+                    </div >
+                </div >
+            }
+        </div>
     );
 };
 
