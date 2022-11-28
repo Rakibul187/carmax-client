@@ -25,12 +25,14 @@ const AllUsers = () => {
         return <p>Loading</p>
     }
 
+    console.log(users)
+
     return (
         <div className='p-10'>
             {
                 users?.length &&
                 <div>
-                    <h3 className="text-3xl mb-5">All Users</h3>
+                    <h3 className="text-3xl font-bold mb-5">Here is all Buyers</h3>
                     <div className="overflow-x-auto">
                         <table className="table w-full">
                             <thead>
@@ -46,9 +48,9 @@ const AllUsers = () => {
                                 {
                                     users?.map((user, i) => <tr key={user._id}>
                                         <th>{i + 1}</th>
-                                        <td>{user.name}</td>
-                                        <td>{user.email}</td>
-                                        <td>{user.role}</td>
+                                        <td>{user?.name}</td>
+                                        <td>{user?.email}</td>
+                                        <td>{user?.role}</td>
                                         <td><button onClick={() => handleProductDelete(user?.name, user?._id)} className='btn btn-primary btn-xs'>Delete</button></td>
                                     </tr>)
                                 }

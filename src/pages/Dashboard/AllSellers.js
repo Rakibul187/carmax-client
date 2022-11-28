@@ -17,7 +17,7 @@ const AllSellers = () => {
                 {
                     sellers &&
                     <div>
-                        <h3 className="text-3xl mb-5">All Users</h3>
+                        <h3 className="text-3xl font-bold mb-5">Here is all Sellers</h3>
                         <div className="overflow-x-auto">
                             <table className="table w-full">
                                 <thead>
