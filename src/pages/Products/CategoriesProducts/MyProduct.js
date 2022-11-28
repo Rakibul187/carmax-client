@@ -1,8 +1,24 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 
-const MyProduct = ({ product }) => {
+const MyProduct = ({ product, refetch }) => {
     // console.log(product)
-    const { img, description, mobile, postTime, productName, productCondition, purchasePrice, resellPrice, sellerNmae, yearOfPurchase, yearOfUse } = product
+    const { img, description, mobile, postTime, productName, productCondition, purchasePrice, resellPrice, sellerNmae, yearOfPurchase, yearOfUse, _id } = product
+
+
+    const handleProductDelete = id => {
+        fetch(`http://localhost:5000/product/${id}`, {
+            method: "DELETE"
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.deletedCount) {
+                    toast.success(`${productName} deleted succesfully.`)
+                    refetch()
+                }
+            })
+    }
     return (
         <div>
             <div className="card lg:card-side bg-base-100 shadow-xl mb-10">
@@ -19,12 +35,14 @@ const MyProduct = ({ product }) => {
                         <p className='text-secondary'><span >Contact: </span> {mobile}</p>
                         <p className='text-secondary'><span >Post Time: </span> {postTime}</p>
                         <p className='text-secondary'> <span >Used: </span> {yearOfUse}</p>
+                        <p className='text-secondary'> status: unsold </p>
                         <div className="card-actions justify-end">
                         </div>
                     </div>
                     <div className='flex justify-end'>
 
-                        <button className="btn btn-primary">Advertised</button>
+                        <button className="btn btn-primary">Advertise</button>
+                        <button onClick={() => handleProductDelete(_id)} className="btn btn-dark ml-4 px-8">Delete</button>
                     </div>
                 </div>
 

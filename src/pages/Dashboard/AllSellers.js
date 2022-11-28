@@ -12,10 +12,10 @@ const AllSellers = () => {
 
     return (
         <div>
-            <p>All Sellers</p>
+
             <div>
                 {
-                    sellers?.length &&
+                    sellers &&
                     <div>
                         <h3 className="text-3xl mb-5">All Users</h3>
                         <div className="overflow-x-auto">
@@ -25,6 +25,7 @@ const AllSellers = () => {
                                         <th></th>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>Verify</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -34,7 +35,8 @@ const AllSellers = () => {
                                             <th>{i + 1}</th>
                                             <td>{seller.name}</td>
                                             <td>{seller.email}</td>
-                                            <td><button className='btn btn-accent btn-xs'>Delete</button></td>
+                                            <td><button className='btn btn-info btn-xs'>unverified</button></td>
+                                            <td><button className='btn btn-delete btn-xs'>Delete</button></td>
                                         </tr>)
                                     }
                                 </tbody>

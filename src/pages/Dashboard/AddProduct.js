@@ -1,14 +1,17 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
 
 const AddProduct = () => {
     const { handleSubmit, register, formState: { errors } } = useForm()
     const { user } = useContext(AuthContext)
     const imgHostKey = process.env.REACT_APP_imgbb_key;
+    const navigate = useNavigate()
 
     const handleAddProduct = data => {
+        console.log(data)
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image);
@@ -19,6 +22,7 @@ const AddProduct = () => {
         })
             .then(res => res.json())
             .then(imageData => {
+                console.log(imageData)
                 const product = {
                     productName: data.productName,
                     Category: data.category,
@@ -50,6 +54,7 @@ const AddProduct = () => {
                         if (data.acknowledged) {
                             console.log(data)
                             toast.success("Product Upload Successfully.")
+                            navigate('/dashboard/myproducts')
                         }
                     })
             })

@@ -1,20 +1,25 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { async } from '@firebase/util';
+import { useQuery } from '@tanstack/react-query';
+import React, { useContext } from 'react';
 import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
 import MyProduct from '../Products/CategoriesProducts/MyProduct';
 
 const MyProducts = () => {
     const { user } = useContext(AuthContext)
-    const [products, setProdutct] = useState([])
 
-    useEffect(() => {
-        if (user) {
-            fetch(`http://localhost:5000/dashboard/myproducts?name=${user.displayName}`)
-                .then(res => res.json())
-                .then(data => setProdutct(data))
+    const { data: products = [], refetch, isLoading } = useQuery({
+        queryKey: ["products"],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/dashboard/myproducts?name=${user.displayName}`)
+            const data = await res.json()
+            return data
         }
-    }, [user])
+    })
 
-    console.log(products)
+    if (isLoading) {
+        return <p>loading</p>
+    }
+    // console.log(products)
 
     return (
         <div className='grid grid-cols-1 gap-5 p-10'>
@@ -24,6 +29,7 @@ const MyProducts = () => {
                 products.map(product => <MyProduct
                     key={product._id}
                     product={product}
+                    refetch={refetch}
                 ></MyProduct>)
             }
         </div>

@@ -19,7 +19,7 @@ const MyBooking = () => {
     return (
         <div>
             {
-                bookings?.length &&
+                bookings &&
                 <div>
                     <h3 className="text-2xl mt-8 font-bold mb-5">Your Ordered Products</h3>
                     <div className="overflow-x-auto">
