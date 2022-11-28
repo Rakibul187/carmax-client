@@ -4,7 +4,7 @@ const AllSellers = () => {
     const [sellers, setSellers] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost:5000/users/seller?role=Seller")
+        fetch("https://carmax-server-alpha.vercel.app/users/seller?role=Seller")
             .then(res => res.json())
             .then(data => setSellers(data))
     }, [])

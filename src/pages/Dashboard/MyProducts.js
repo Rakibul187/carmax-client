@@ -10,7 +10,7 @@ const MyProducts = () => {
     const { data: products = [], refetch, isLoading } = useQuery({
         queryKey: ["products"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/dashboard/myproducts?name=${user.displayName}`)
+            const res = await fetch(`https://carmax-server-alpha.vercel.app/dashboard/myproducts?name=${user.displayName}`)
             const data = await res.json()
             return data
         }
@@ -22,15 +22,22 @@ const MyProducts = () => {
     // console.log(products)
 
     return (
-        <div className='grid grid-cols-1 gap-5 p-10'>
-            <p className='text-3xl font-semibold mt-3 mb-2'>My Products</p>
+        <div>
             {
-                products &&
-                products.map(product => <MyProduct
-                    key={product._id}
-                    product={product}
-                    refetch={refetch}
-                ></MyProduct>)
+                products?.length ?
+                    <div className='grid grid-cols-1 gap-5 p-10'>
+                        <p className='text-3xl font-semibold mt-3 mb-2'>My Products</p>
+                        {
+                            products &&
+                            products.map(product => <MyProduct
+                                key={product._id}
+                                product={product}
+                                refetch={refetch}
+                            ></MyProduct>)
+                        }
+                    </div>
+                    :
+                    <p className='text-3xl font-semibold mt-3 mb-2'>You have any products yet!</p>
             }
         </div>
     );

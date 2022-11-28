@@ -7,30 +7,20 @@ const DashboardLayout = () => {
     const { user } = useContext(AuthContext)
     const [role, setRole] = useState('')
 
-
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/users/role`)
+            fetch(`https://carmax-server-alpha.vercel.app/users/role?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => {
-                    if (data) {
-                        data.map(user => {
-                            if (user.role === "Seller") {
-                                return setRole(user.role)
-                            }
-                            else if (user.role === "Buyer") {
-                                return setRole(user.role)
-                            }
-                            else if (user.role === "admin") {
-                                return setRole(user.role)
-                            }
-                            return setRole(user.role)
-                        })
+                    console.log(data.role)
+                    if (data.role) {
+                        return setRole(data.role)
                     }
+                    return setRole("Buyer")
                 })
         }
-
     }, [user])
+
 
     console.log(role)
     return (

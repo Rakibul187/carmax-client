@@ -42,7 +42,7 @@ const AddProduct = () => {
                 };
                 console.log(product)
 
-                fetch('http://localhost:5000/addproduct', {
+                fetch('https://carmax-server-alpha.vercel.app/addproduct', {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"

@@ -8,7 +8,7 @@ const AllUsers = () => {
     // console.log(users)
     const handleProductDelete = (name, id) => {
         setLoading(true)
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://carmax-server-alpha.vercel.app/users/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())

@@ -3,11 +3,11 @@ import toast from 'react-hot-toast';
 
 const MyProduct = ({ product, refetch }) => {
     // console.log(product)
-    const { img, description, mobile, postTime, productName, productCondition, purchasePrice, resellPrice, sellerNmae, yearOfPurchase, yearOfUse, _id } = product
+    const { image, description, mobile, postTime, productName, productCondition, purchasePrice, resellPrice, sellerNmae, yearOfPurchase, yearOfUse, _id } = product
 
-
+    console.log(product)
     const handleProductDelete = id => {
-        fetch(`http://localhost:5000/product/${id}`, {
+        fetch(`https://carmax-server-alpha.vercel.app/product/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())
@@ -22,7 +22,7 @@ const MyProduct = ({ product, refetch }) => {
     return (
         <div>
             <div className="card lg:card-side bg-base-100 shadow-xl mb-10">
-                <figure className='w-[40vw] p-8 sm:mx-auto'><img src={img} alt="Album" /></figure>
+                <figure className='w-[40vw] p-8 sm:mx-auto'><img src={image} alt="Album" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">  {productName}</h2>
                     <p className='text-slate-500'>{description}</p>

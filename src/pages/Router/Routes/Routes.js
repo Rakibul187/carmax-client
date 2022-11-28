@@ -39,7 +39,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/category/:Category',
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.Category}`),
+                loader: ({ params }) => fetch(`https://carmax-server-alpha.vercel.app/category/${params.Category}`),
                 element: <CategoriesProducts></CategoriesProducts>
             },
         ]
@@ -62,7 +62,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/dashboard/allusers',
-                loader: () => fetch("http://localhost:5000/users"),
+                loader: () => fetch("https://carmax-server-alpha.vercel.app/users"),
                 element: <AllUsers></AllUsers>
             },
             {
