@@ -60,7 +60,7 @@ const BookingModal = ({ booking, setBooking }) => {
                         <input type="text" value={`$ ${resellPrice}`} disabled className="input input-bordered w-full " />
                         <input type="number" name='mobile' placeholder="Your Mobile" required className="input input-bordered w-full " />
                         <input type="text" name='location' placeholder="Meeting Location" required className="input input-bordered w-full " />
-                        <input className='w-full btn btn-primary' type='submit' value="submit" />
+                        <input className='w-full btn btn-primary text-white' type='submit' value="submit" />
                     </form>
                 </div>
             </div>

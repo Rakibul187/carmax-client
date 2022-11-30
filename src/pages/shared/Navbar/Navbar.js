@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import { FaCar } from "react-icons/fa";
 
 
 const Navbar = () => {
@@ -16,26 +17,25 @@ const Navbar = () => {
     }
 
     const menuItems = <React.Fragment>
-        <li className="rounded"><Link to="/">Home</Link></li>
-        <li className="rounded"><Link to="/blogs">Blogs</Link></li>
-        <li className="rounded"><Link to="/about">About</Link></li>
+        <li className="mr-1 hover:text-blue-700 font-semibold"><Link to="/">Home</Link></li>
+        <li className="mr-1 hover:text-blue-700 font-semibold"><Link to="/blogs">Blogs</Link></li>
+        <li className="mr-1 hover:text-blue-700 font-semibold"><Link to="/contact">Contact</Link></li>
 
         {
             user?.uid ?
                 <>
-                    <li><Link to="/dashboard">Dashboard</Link></li>
-                    <button onClick={handleLogout} className='btn btn-ghost'>LogOut</button>
+                    <li className="mr-1 hover:text-blue-700 font-semibold"><Link to="/dashboard">Dashboard</Link></li>
+                    <button onClick={handleLogout} className='btn btn-ghost text-red-400'>LogOut</button>
                 </>
                 :
                 <>
-                    <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/signup">Signup</Link></li>
+                    <li className='text-red-400 text-lg font-bold hover:text-blue-800'><Link to="/login">Login</Link></li>
                 </>
         }
     </React.Fragment>
 
     return (
-        <div className="navbar bg-base- flex justify-between px-10">
+        <div className="navbar bg-slate-100 flex justify-between px-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -45,7 +45,7 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link className="btn btn-ghost font-extrabold normal-case text-xl">CarMax</Link>
+                <Link to='/' className="btn  btn-ghost font-extrabold normal-case text-2xl"><FaCar className='text-red-400 ml-2 text-bold'></FaCar> <span >CarMax</span></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">

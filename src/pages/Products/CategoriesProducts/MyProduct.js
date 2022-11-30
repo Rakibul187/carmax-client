@@ -27,21 +27,21 @@ const MyProduct = ({ product, refetch }) => {
                     <h2 className="card-title">  {productName}</h2>
                     <p className='text-slate-500'>{description}</p>
                     <div className='grid lg:grid-cols-3 md:grid-cols-2'>
-                        <p className='text-secondary'><span >Purchase Year: </span> {yearOfPurchase}</p>
-                        <p className='text-secondary'><span >Product Quality: </span> {productCondition}</p>
-                        <p className='text-secondary'><span >Purchase Price: </span>${purchasePrice} </p>
-                        <p className='text-secondary'><span >Resale Price: </span> ${resellPrice}</p>
-                        <p className='text-secondary'><span >Seller: </span> {sellerNmae} </p>
-                        <p className='text-secondary'><span >Contact: </span> {mobile}</p>
-                        <p className='text-secondary'><span >Post Time: </span> {postTime}</p>
-                        <p className='text-secondary'> <span >Used: </span> {yearOfUse}</p>
-                        <p className='text-secondary'> status: unsold </p>
+                        <p className='text-red-400'><span >Purchase Year: </span> {yearOfPurchase}</p>
+                        <p className='text-red-400'><span >Product Quality: </span> {productCondition}</p>
+                        <p className='text-red-400'><span >Purchase Price: </span>${purchasePrice} </p>
+                        <p className='text-red-400'><span >Resale Price: </span> ${resellPrice}</p>
+                        <p className='text-red-400'><span >Seller: </span> {sellerNmae} </p>
+                        <p className='text-red-400'><span >Contact: </span> {mobile}</p>
+                        <p className='text-red-400'><span >Post Time: </span> {postTime}</p>
+                        <p className='text-red-400'> <span >Used: </span> {yearOfUse}</p>
+                        <p className='text-red-400'> status: unsold </p>
                         <div className="card-actions justify-end">
                         </div>
                     </div>
                     <div className='flex justify-end'>
 
-                        <button className="btn btn-primary">Advertise</button>
+                        <button className="btn btn-primary text-white">Advertise</button>
                         <button onClick={() => handleProductDelete(_id)} className="btn btn-dark ml-4 px-8">Delete</button>
                     </div>
                 </div>

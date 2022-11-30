@@ -1,6 +1,6 @@
-import { async } from '@firebase/util';
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import Loader from '../../Components/Loader';
 import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
 import MyProduct from '../Products/CategoriesProducts/MyProduct';
 
@@ -17,7 +17,7 @@ const MyProducts = () => {
     })
 
     if (isLoading) {
-        return <p>loading</p>
+        return <Loader></Loader>
     }
     // console.log(products)
 
@@ -26,7 +26,7 @@ const MyProducts = () => {
             {
                 products?.length ?
                     <div className='grid grid-cols-1 gap-5 p-10'>
-                        <p className='text-3xl font-semibold mt-3 mb-2'>My Products</p>
+                        <p className='text-2xl text-red-400 font-semibold mt-3 mb-2'>My Products</p>
                         {
                             products &&
                             products.map(product => <MyProduct
@@ -37,7 +37,7 @@ const MyProducts = () => {
                         }
                     </div>
                     :
-                    <p className='text-3xl font-semibold mt-3 mb-2'>You have any products yet!</p>
+                    <p className='text-2xl text-red-400 font-semibold mt-3 mb-2'>You don't have any products yet!</p>
             }
         </div>
     );

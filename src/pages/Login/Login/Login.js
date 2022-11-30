@@ -50,9 +50,9 @@ const Login = () => {
     }
 
     return (
-        <div className='h-[400px] flex justify-center mt-6 mb-20'>
-            <div className='w-96 p-7'>
-                <h1 className='text-2xl mb-3 font-bold text-center'>Login</h1>
+        <div className='h-[480px] flex justify-center mt-6 mb-20'>
+            <div className='w-96 bg-slate-300 p-7'>
+                <h1 className='text-2xl mb-3 font-bold text-red-400 text-center'>Login</h1>
                 <form onSubmit={handleSubmit(handleLogin)}>
                     <div className="form-control w-full">
                         <label className="label"><span className="label-text">Email</span></label>
@@ -72,14 +72,13 @@ const Login = () => {
                             aria-invalid={errors.password ? "true" : "false"}
                         />
                         {errors.password && <p className='text-red-600' >{errors.password?.message}</p>}
-                        <label className="label"><span className="label-text">Forget Password?</span></label>
                     </div>
-                    <input className='btn btn-primary w-full rounded-xl input-sm' value='login' type="submit" />
+                    <input className='btn btn-primary text-white w-full rounded-xl mt-4 input-sm' value='login' type="submit" />
                 </form>
                 {
                     loginError && <p className='text-red-600'>{loginError}</p>
                 }
-                <small>New to doctors portal? <Link className='text-secondary' to='/signup'>Create a new account</Link></small>
+                <small>New to doctors portal? <Link className='text-red-400' to='/signup'>Create a new account</Link></small>
                 <div className="divider">or</div>
                 <button onClick={handlerGoogleSignIn} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
             </div>
