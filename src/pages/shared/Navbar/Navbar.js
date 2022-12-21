@@ -25,11 +25,11 @@ const Navbar = () => {
             user?.uid ?
                 <>
                     <li className="mr-1 hover:text-blue-700 font-semibold"><Link to="/dashboard">Dashboard</Link></li>
-                    <button onClick={handleLogout} className='btn btn-ghost text-red-400'>LogOut</button>
+                    <button onClick={handleLogout} className='btn btn-ghost text-primary'>LogOut</button>
                 </>
                 :
                 <>
-                    <li className='text-red-400 text-lg font-bold hover:text-blue-800'><Link to="/login">Login</Link></li>
+                    <li className='text-primary text-lg font-bold hover:text-blue-800'><Link to="/login">Login</Link></li>
                 </>
         }
     </React.Fragment>
@@ -45,7 +45,7 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link to='/' className="btn  btn-ghost font-extrabold normal-case text-2xl"><FaCar className='text-red-400 ml-2 text-bold'></FaCar> <span >CarMax</span></Link>
+                <Link to='/' className="btn  btn-ghost font-extrabold normal-case text-xl"><FaCar className='text-primary ml-2 text-bold'></FaCar> <span className='ml-2 capitalize' >  c a r m a x</span></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">

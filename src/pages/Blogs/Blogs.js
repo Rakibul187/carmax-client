@@ -4,7 +4,7 @@ const Blogs = () => {
     return (
         <div>
             <div className=' max-w-[1200px] mx-auto'>
-                <h1 className='text-2xl mx-12 mt-12 mb-6 font-bold text-red-400'>You May Know More About</h1>
+                <h1 className='text-2xl mx-12 mt-12 mb-6 font-bold text-primary'>You May Know More About</h1>
                 <div className='mx-12 mb-12 gap-5'>
                     <div className='p-5 mb-4 bg-slate-50 rounded-lg border-r-4 border-l-4'>
                         <h3 className='text-xl font-bold my-2'>What are the different ways to manage a state in a React application?</h3>

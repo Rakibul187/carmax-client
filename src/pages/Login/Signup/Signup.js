@@ -82,7 +82,7 @@ const Signup = () => {
     return (
         <div className='h-[600px] flex justify-center mb-4 mt-8'>
             <div className='w-96 bg-slate-300 p-7'>
-                <h1 className='text-3xl mb-2 font-bold text-center text-red-400'>Sign up</h1>
+                <h1 className='text-3xl mb-2 font-bold text-center text-primary'>Sign up</h1>
                 <form onSubmit={handleSubmit(handleSignup)}>
                     <div className="form-control w-full">
                         <label className="label"><span className="label-text">Your Name</span></label>
@@ -124,7 +124,7 @@ const Signup = () => {
                     <input className='btn btn-primary text-white w-full rounded-xl input-sm mt-1' value='Sign up' type="submit" />
                 </form>
                 {signUpError && <p className='text-red-600'>{signUpError}</p>}
-                <small>Already have an account? <Link className='text-red-400' to='/login'>please login</Link></small>
+                <small>Already have an account? <Link className='text-primary' to='/login'>please login</Link></small>
                 <div className="divider">or</div>
                 <button onClick={handlerGoogleSignIn} className='btn btn-outline w-full mb-48'>CONTINUE WITH GOOGLE</button>
             </div>

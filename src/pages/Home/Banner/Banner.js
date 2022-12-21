@@ -10,7 +10,7 @@ const Banner = () => {
                     <div className="text-white">
                         <h1 className="mb-3 text-5xl font-bold">Love Your Car <br />Guarantee</h1>
                         <p className="mb-5 text-xl">Two day test drives, 30 days return (up to 3000 miles) <br /> & 45 days free services</p>
-                        <button className="btn btn-primary text-white text-white">Search Car</button>
+                        <button className="btn btn-primary text-white">Search Car</button>
                     </div>
                 </div>
             </div>

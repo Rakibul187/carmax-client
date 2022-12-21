@@ -11,6 +11,7 @@ const BookingModal = ({ booking, setBooking }) => {
         event.preventDefault()
         const form = event.target;
         const buyerMobile = form.mobile.value;
+
         const meetingLocation = form.location.value;
 
         if (buyerMobile.length < 11) {

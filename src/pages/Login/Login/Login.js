@@ -3,24 +3,16 @@ import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
-// import useToken from '../../../hooks/useToken';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm()
     const { signIn, googleSignIn } = useContext(AuthContext)
     const [loginError, setLoginError] = useState('')
     const provider = new GoogleAuthProvider()
-    // const [loginUserEmail, setLoginUserEmail] = useState('')
-
-    // const [token] = useToken(loginUserEmail)
 
     const location = useLocation()
     const navigate = useNavigate()
     const from = location.state?.from.pathname || "/";
-
-    // if (token) {
-    //     navigate(from, { replace: true })
-    // }
 
     const handlerGoogleSignIn = () => {
         googleSignIn(provider)
@@ -52,7 +44,7 @@ const Login = () => {
     return (
         <div className='h-[480px] flex justify-center mt-6 mb-20'>
             <div className='w-96 bg-slate-300 p-7'>
-                <h1 className='text-2xl mb-3 font-bold text-red-400 text-center'>Login</h1>
+                <h1 className='text-2xl mb-3 font-bold text-primary text-center'>Login</h1>
                 <form onSubmit={handleSubmit(handleLogin)}>
                     <div className="form-control w-full">
                         <label className="label"><span className="label-text">Email</span></label>
@@ -78,7 +70,7 @@ const Login = () => {
                 {
                     loginError && <p className='text-red-600'>{loginError}</p>
                 }
-                <small>New to doctors portal? <Link className='text-red-400' to='/signup'>Create a new account</Link></small>
+                <small>New to Carmax? <Link className='text-primary' to='/signup'>Create a new account</Link></small>
                 <div className="divider">or</div>
                 <button onClick={handlerGoogleSignIn} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
             </div>

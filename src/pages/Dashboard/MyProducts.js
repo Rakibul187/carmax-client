@@ -26,7 +26,7 @@ const MyProducts = () => {
             {
                 products?.length ?
                     <div className='grid grid-cols-1 gap-5 p-10'>
-                        <p className='text-2xl text-red-400 font-semibold mt-3 mb-2'>My Products</p>
+                        <p className='text-2xl text-primary font-semibold mt-3 mb-2'>My Products</p>
                         {
                             products &&
                             products.map(product => <MyProduct
@@ -37,7 +37,7 @@ const MyProducts = () => {
                         }
                     </div>
                     :
-                    <p className='text-2xl text-red-400 font-semibold mt-3 mb-2'>You don't have any products yet!</p>
+                    <p className='text-2xl text-primary font-semibold mt-3 mb-2'>You don't have any products yet!</p>
             }
         </div>
     );

@@ -10,7 +10,7 @@ const CheckOutForm = ({ booking }) => {
 
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://carmax-server-alpha.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -97,7 +97,7 @@ const CheckOutForm = ({ booking }) => {
                     Pay
                 </button>
             </form>
-            <p className='text-red-400'>{cardError.message}</p>
+            <p className='text-primary'>{cardError.message}</p>
         </div>
     );
 };

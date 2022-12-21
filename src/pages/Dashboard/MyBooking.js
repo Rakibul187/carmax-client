@@ -28,7 +28,7 @@ const MyBooking = () => {
             {
                 bookings?.length ?
                     <div>
-                        <h3 className="text-2xl mt-8 font-semibold text-red-400 mb-5">Your Ordered Products</h3>
+                        <h3 className="text-2xl mt-8 font-semibold text-primary mb-5">Your Ordered Products</h3>
                         <div className="overflow-x-auto">
                             <table className="table w-full">
                                 <thead>
@@ -70,7 +70,7 @@ const MyBooking = () => {
                         </div>
                     </div>
                     :
-                    <p className='text-2xl font-semibold mt-10 text-red-400'>You dont have any booking product</p>
+                    <p className='text-2xl font-semibold mt-10 text-primary'>You dont have any booking product</p>
 
             }
         </div>

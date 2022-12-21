@@ -12,8 +12,8 @@ const Contact = () => {
                 >
                     <div className="card  w-full max-w-sm ">
                         <div className="card-body">
-                            <h1 className='text-3xl text-red-400 font-bold text-center'>Contact Us</h1>
-                            <h1 className='text-3xl font-semibold text-red-400 text-center mb-2'>Stay connected with us</h1>
+                            <h1 className='text-3xl text-primary font-bold text-center'>Contact Us</h1>
+                            <h1 className='text-3xl font-semibold text-primary text-center mb-2'>Stay connected with us</h1>
                             <div className="form-control gap-2">
                                 <input type="test" placeholder="Your Name" className="input input-bordered" />
                                 <input type="email" placeholder="Your Email" className="input input-bordered" />

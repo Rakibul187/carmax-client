@@ -16,7 +16,7 @@ const Categories = () => {
                 categories &&
 
                 <div className=' my-32'>
-                    <p className='text-3xl text-red-400 font-bold text-center'>We Sell </p>
+                    <p className='text-3xl text-primary font-bold text-center'>We Sell </p>
                     <p><span className='border border-t-2'></span></p>
                     <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 sm:mx-auto'>
                         {
